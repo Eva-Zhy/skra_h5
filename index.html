@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <link rel="stylesheet" type="text/css" href="css/main.css?v=123"/>
+    <link rel="stylesheet" type="text/css" href="css/animate.min.css?v=123"/>
+    <title></title>
+    <script src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/layout.js"></script>
+    <script type="text/javascript" src="js/imagesloaded.pkgd.js"></script>
+    <script type="text/javascript" src="js/jquery.transit.js"></script>
+    <script type="text/javascript" src="js/jquery.transit.js"></script>
+    <!--<script src="https://www.jwnice.com/jywx/wxshare/wxShare.js?v=123"></script>-->
+</head>
+<body>
+<audio src="audio/1.mp3" id="audio1"></audio>
+<audio src="audio/2.mp3" id="audio2"></audio>
+<audio src="audio/3.mp3" id="audio3"></audio>
+<audio src="audio/4.mp3" id="audio4"></audio>
+<audio src="audio/bg.mp3" id="bg" loop="loop" autoplay="autoplay"></audio>
+<div id="loading">
+    <img id="page0_1" src="img/loading/1.png" class="loading-css" style="display: block;">
+    <img id="page0_2" src="img/loading/2.png" class="loading-css" style="display: none;">
+    <img id="page0_3" src="img/loading/3.png" class="loading-css" style="display: none;">
+    <img id="page0_4" src="img/loading/4.png" class="loading-css" style="display: none;">
+    <img id="page0_5" src="img/loading/5.png" class="loading-css" style="display: none;">
+    <img id="page0_6" src="img/loading/6.png" class="loading-css" style="display: none;">
+    <img id="page0_7" src="img/loading/7.png" class="loading-css" style="display: none;">
+    <img id="page0_8" src="img/loading/8.png" class="loading-css" style="display: none;">
+    <img id="page0_9" src="img/loading/9.png" class="loading-css" style="display: none;">
+    <img id="page0_10" src="img/loading/10.png" class="loading-css" style="display: none;">
+    <img id="page0_11" src="img/loading/11.png" class="loading-css" style="display: none;">
+
+    <img id="start" src="img/loading/start.png"/>
+</div>
+
+<div id="page1" class="page" style="z-index: 1;">
+    <img id="page1_1" src="img/page1/0001.png" class="img-css" style="display: block;">
+</div>
+
+<div id="page2" class="page_video">
+
+</div>
+
+<div id="page3" class="page_video">
+
+</div>
+
+<div id="page4" class="page_video">
+
+</div>
+
+<div id="page5" class="page_video">
+
+</div>
+
+<div id="video_end">
+    <div id="video_bg">
+    </div>
+    <div class="red_line">
+    </div>
+    <div class="text">
+
+    </div>
+    <img id="jx" src="img/icon/page2_btn2.png">
+    <img id="ko" src="img/icon/page2_btn1.png">
+</div>
+
+<div id="page1_btn">
+    <img id="page1_btn1" src="img/icon/page1_btn1.png">
+    <img id="page1_btn2" src="img/icon/page1_btn2.png">
+    <img id="page1_btn3" src="img/icon/page1_btn3.png">
+    <img id="page1_btn4" src="img/icon/page1_btn4.png">
+</div>
+
+<div id="end_page">
+    <img id="end_bg" src="img/end_page/bg.jpg">
+    <div id="yizhao" style="display: none;">
+        <img class="zi" src="img/end_page/zi.png">
+        <img class="dax" src="img/end_page/daxia.png">
+        <img class="ying" src="img/end_page/ying.png">
+        <img class="logo" src="img/end_page/logo.png">
+        <img class="btn1" src="img/end_page/btn1.png">
+    </div>
+    <div id="baoming" style="display: none;">
+        <img class="bmtit" src="img/end_page/bmtit.png">
+        <img class="bmtit2" src="img/end_page/bmtit2.png">
+        <div class="chuyizhao">
+            <textarea style="resize:none;" placeholder="请在此输入。如：侠之大者，仁德无量"></textarea>
+        </div>
+        <img class="mz" src="img/end_page/nc.png">
+        <div class="input1">
+            <input type="text"/>
+        </div>
+
+        <img class="dh" src="img/end_page/dh.png">
+        <div class="input2">
+            <input type="tel"/>
+        </div>
+        <img class="hd" src="img/end_page/hd.png">
+        <img class="tj" src="img/end_page/tj.png">
+    </div>
+
+    <div id="fenxiang" style="display: none;">
+        <img class="cg" src="img/end_page/cg.png">
+    </div>
+</div>
+
+<script>
+    var my_now_page = 1;
+    var audio1 = document.getElementById("audio1");
+    var audio2 = document.getElementById("audio2");
+    var audio3 = document.getElementById("audio3");
+    var audio4 = document.getElementById("audio4");
+    var bg = document.getElementById("bg");
+
+    $(document).ready(function () {
+        audioAutoPlay();
+    });
+    function audioAutoPlay() {
+        bg.play();
+
+        audio1.play();
+        audio1.pause();
+        audio2.pause();
+        audio2.play();
+        audio2.pause();
+        audio3.play();
+        audio3.pause();
+        audio4.play();
+        audio4.pause();
+        document.addEventListener("WeixinJSBridgeReady", function () {
+            bg.play();
+
+            audio1.play();
+            audio1.pause();
+            audio2.pause();
+            audio2.play();
+            audio2.pause();
+            audio3.play();
+            audio3.pause();
+            audio4.play();
+            audio4.pause();
+        });
+        document.addEventListener('YixinJSBridgeReady', function () {
+            bg.play();
+
+            audio1.play();
+            audio1.pause();
+            audio2.play();
+            audio2.pause();
+            audio3.play();
+            audio3.pause();
+            audio4.play();
+            audio4.pause();
+        });
+    }
+    // page1
+    add_page_img(1, "0", 2, 168, ".png");
+    //    page_ani(1, 173, "", "", "");
+    // page2
+    add_page_img(2, "001", 0, 176, ".jpg");
+
+
+    //    page_ani(0, 11, "", 500, "");
+    var li = 0;
+    var page_interval = setInterval(function () {
+        console.log(1);
+        var page_id = '#page' + 0 + '_';
+        var jq_page_id = '#page' + 0;
+
+        if (li < 12) {
+            $(page_id + li).css('display', 'none');
+        }
+        li++;
+        $(page_id + li).css('display', 'block');
+
+        if (li == 12) {
+            li = 0;
+        }
+    }, 250);
+
+    $('.img-css').imagesLoaded(function () {
+        $("#start").css('display', 'block');
+        $('#start').animate({opacity: 1}, 600, function () {
+            $('#start').click(function () {
+                clearInterval(page_interval);
+                $('#loading').animate({opacity: 0}, 600, function () {
+                    $("#page1").css('display', 'block');
+                    $('#loading').css('display', 'none');
+                    page_ani(1, 167, "", "", "");
+                });
+                add_page_img(3, "001", 0, 233, ".jpg");
+                add_page_img(4, "001", 0, 172, ".jpg");
+                add_page_img(5, "001", 0, 177, ".jpg");
+            });
+        });
+    });
+
+    function add_page_img(page_num, img_head, img_start, img_end, img_suffix) {
+        var add_html = '';
+        var page_id = 'page' + page_num;
+        var i = 1;
+        for (img_start; img_start <= img_end; img_start++) {
+            var img_id = page_id + '_' + i;
+            var img_src = 'img/page' + page_num + '/' + img_head;
+            if (img_start < 10) {
+                img_src = img_src + '00' + img_start + img_suffix;
+            } else if (img_start > 9 && img_start < 100) {
+                img_src = img_src + '0' + img_start + img_suffix;
+            } else if (img_start > 99 && img_start < 1000) {
+                img_src = img_src + '' + img_start + img_suffix;
+            }
+
+            add_html += "<img id='" + img_id + "' src='" + img_src + "' class='img-css'>";
+            i++;
+        }
+        var jq_page_id = "#" + page_id;
+        $(jq_page_id).append(add_html);
+    }
+
+    function page_ani(now_page, img_num, page_title, page_time, sleep_time) {
+        var page_id = '';
+        page_id = '#page' + now_page + '_';
+        var jq_page_id = '#page' + now_page;
+        my_now_page = now_page;
+        console.log("now_page", now_page);
+        if (now_page == 2) {
+            bg.pause();
+            audio1.play();
+            $("#page2").css('display', 'block');
+            $("#page3").css('display', 'none');
+            $("#page4").css('display', 'none');
+            $("#page5").css('display', 'none');
+        } else if (now_page == 3) {
+            bg.pause();
+            audio2.play();
+            $("#page2").css('display', 'none');
+            $("#page3").css('display', 'block');
+            $("#page4").css('display', 'none');
+            $("#page5").css('display', 'none');
+        } else if (now_page == 4) {
+            bg.pause();
+            audio3.play();
+            $("#page2").css('display', 'none');
+            $("#page3").css('display', 'none');
+            $("#page4").css('display', 'block');
+            $("#page5").css('display', 'none');
+        } else if (now_page == 5) {
+            bg.pause();
+            audio4.play();
+            $("#page2").css('display', 'none');
+            $("#page3").css('display', 'none');
+            $("#page4").css('display', 'none');
+            $("#page5").css('display', 'block');
+        }
+
+        if (page_time == "") {
+            page_time = 60;
+        }
+        var i = 0;
+        var page_interval = setInterval(function () {
+            if (i == 0) {
+                $("title").html(page_title);
+                $(jq_page_id).css('display', 'block');
+            }
+            if (i != img_num) {
+                $(page_id + i).css('display', 'none');
+            }
+            i++;
+            $(page_id + i).css('display', 'block');
+            if (i > img_num) {
+                console.log(i);
+                clearInterval(page_interval);
+                if (now_page == 1) {
+                    show_page1_btn();
+                } else {
+                    show_video_end(now_page);
+                }
+            }
+        }, page_time);
+    }
+    function show_end_page() {
+        $("#end_page").css("display", "block");
+        $("#yizhao").css("display", "block");
+        $('.zi').addClass('animated tada');
+        setTimeout(function () {
+            $(".dax").animate({left: 0}, 700);
+        }, 700);
+        setTimeout(function () {
+            $('.ying').animate({right: "2rem"}, 500);
+        }, 1000);
+        setTimeout(function () {
+            $('.logo').animate({opacity: 1}, 600);
+        }, 1300);
+
+        setTimeout(function () {
+            $('.btn1').animate({bottom: "8rem"}, 600, function () {
+                $('.btn1').click(function () {
+                    $('#yizhao').animate({opacity: 0}, function () {
+                        $('#yizhao').css('display', 'none');
+                        $('#baoming').css('display', 'block');
+
+                        $('.tj').click(function () {
+                            $('#baoming').css('display', 'none');
+                            $('#fenxiang').css('display', 'block');
+                        });
+                    });
+                });
+            });
+        }, 1500);
+
+    }
+
+    function show_page1_btn() {
+        $("#page1_btn").css("display", "block");
+        $("#page1_btn1").animate({opacity: 1}, 1000);
+        $("#page1_btn2").animate({opacity: 1}, 1000);
+        $("#page1_btn3").animate({opacity: 1}, 1000);
+        $("#page1_btn4").animate({opacity: 1}, 1000);
+    }
+
+    function show_video_end(now_page) {
+        var text_html;
+        if (now_page == 2) {
+            text_html = "无量山魂彝家汉<br/>"
+                + "狂歌铿锵铁脚板<br/>"
+                + "头顶托盘山模样<br/>"
+                + "跳得无量山回响<br/>"
+                + "集声、舞、食为一体<br/>"
+                + "独有上菜礼仪——跳菜<br/>"
+        } else if (now_page == 3) {
+            text_html = "高原特色农业六个一<br/>"
+                + "如六脉神剑<br/>"
+                + "剑剑精准稳<br/>"
+                + "南涧脱贫攻坚<br/>"
+                + "绿色发展新征程<br/>"
+        } else if (now_page == 4) {
+            text_html = "一招落樱神掌<br/>"
+                + "樱花悠悠飘落<br/>"
+                + "侠客翩翩而行<br/>"
+                + "春天最早抵达的地方——南涧樱花谷<br/>"
+        } else if (now_page == 5) {
+            text_html = "秘境仙踪,叠翠如画<br/>"
+                + "天龙八部开篇之地<br/>"
+                + "侠之大者,任德无量——无量山<br/>"
+        }
+
+        $(".text").html("");
+        $(".text").html(text_html);
+
+
+        $("#video_end").css("display", "block");
+
+        $("#video_bg").animate({opacity: 0.5}, 1000, function () {
+            $('.red_line').animate({left: '4rem'}, 800);
+            setTimeout(function () {
+                $('.text').animate({left: '4rem'}, 800);
+            }, 500);
+            setTimeout(function () {
+                $('#jx').animate({opacity: 1}, 800, function () {
+                });
+            }, 1000);
+            setTimeout(function () {
+                $('#ko').animate({opacity: 1}, 800, function () {
+                });
+            }, 1300);
+        });
+    }
+
+    $(document).ready(function () {
+        $("#page1_btn1").click(function () {
+            page_ani(2, 176, "", "", "");
+        });
+
+        $("#page1_btn2").click(function () {
+            page_ani(3, 233, "", "", "");
+        });
+
+        $("#page1_btn3").click(function () {
+            page_ani(4, 172, "", "", "");
+        });
+
+        $("#page1_btn4").click(function () {
+            page_ani(5, 177, "", 100, "");
+        });
+
+        $("#jx").click(function () {
+            var re_page = random_page(my_now_page);
+            $("#video_end").css("display", "none");
+            $("#video_bg").css("opacity", 0);
+            $('.red_line').css("left", '40rem');
+            $('.text').css("left", '40rem');
+            $('#jx').css("opacity", 0);
+            $('#ko').css("opacity", 0);
+            console.log("re_page", re_page);
+            if (re_page == 2) {
+                page_ani(2, 176, "", "", "");
+            } else if (re_page == 3) {
+                page_ani(3, 233, "", "", "");
+            } else if (re_page == 4) {
+                page_ani(4, 172, "", "", "");
+            }
+            else if (re_page == 5) {
+                page_ani(5, 177, "", 100, "");
+            }
+        });
+
+        $("#ko").click(function () {
+            bg.play();
+            show_end_page();
+        })
+    });
+
+    function random_page(now_page) {
+        var random_page_num = parseInt(Math.random() * (5 - 2 + 1) + 2, 10);
+        if (random_page_num == now_page) {
+            random_page(now_page)
+        } else {
+            return random_page_num;
+        }
+    }
+</script>
+</body>
+</html>
